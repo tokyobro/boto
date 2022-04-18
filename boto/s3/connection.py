@@ -407,7 +407,8 @@ class S3Connection(AWSAuthConnection):
         if expires_in_absolute:
             expires = int(expires_in)
         else:
-            expires = int(time.time() + expires_in)
+            # expires = int(time.time() + expires_in)
+            expires = int(time.time()) + int(expires_in)
         auth_path = self.calling_format.build_auth_path(bucket, key)
         auth_path = self.get_path(auth_path)
         # optional version_id and response_headers need to be added to
